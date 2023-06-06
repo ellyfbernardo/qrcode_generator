@@ -4,9 +4,42 @@
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>QRcode</title>
+     <link rel="stylesheet" href="style.css">
+     <title>Gerador de QR code</title>
 </head>
 <body>
+     <div class="container">
+          <h1>Gerador de QR code</h1>
+          <form>
+              <label for="qr-text" class="label-txt">
+                    Insira o link para geral o QR Code:
+              </label>
+              <input type="text" id="qr-text" placeholder="https://">
+              <button type="button" id="generate-btn">Gerar QR code</button>
+          </form>
+          
+          <div id="qrcode"></div>
      
+
+
+     </div>
+
+     <script src="qrcode.min.js"></script>
+     <script>
+          const generateBtn = document.querySelector('#generate-btn');
+
+     const qrCodeDiv = document.querySelector('#generate-btn');
+
+     generateBtn.addEventListener('click',() => {
+          const qrText = document.querySelector('#qr-text').value;
+
+          if (qrText){
+               qrCodeDiv.innerHTML = "";
+               const qrCode = new QRCode(qrCodeDiv, qrText)
+          }
+})
+     </script>
+     
+
 </body>
 </html>
